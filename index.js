@@ -12,6 +12,38 @@ function initMap() {
     lng = event.latLng.lng();
     eBirdApi(lat, lng);
   });
+
+  infoWindow = new google.maps.InfoWindow;
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Location found.');
+      infoWindow.open(map);
+      map.setCenter(pos);
+      map.zoom = 9;
+    }, 
+    function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+  'Error: The Geolocation service failed. Please enable Location services for this website.'
+  :
+  'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
 }
 
 function eBirdApi(lat, lng) {
@@ -45,12 +77,10 @@ function addBirdSightings(responseJson) {
   }
   // setMapOnAll();
 }
-
-// Adds a marker to the map and push to the array.
 function addMarker(bird) {
   var marker = new google.maps.Marker({
     position: {lat: bird.lat, lng: bird.lng},
-    map: map,
+    map: map
     });
     var infoWindow = new google.maps.InfoWindow({
       content: `<h1 class='infoWindowName'>Common Name: ${bird.comName}</h1>
@@ -63,9 +93,6 @@ function addMarker(bird) {
     markers.push(marker);  
 }
 
-
-
-// // Removes the markers from the map, but keeps them in the array.
 function clearMarkers() {
   setMapOnAll(null);
 }
@@ -76,37 +103,23 @@ function setMapOnAll(map) {
   }
 }
 
-//Shows any markers currently in the array.
 function showMarkers() {
   setMapOnAll(map);
 }
 
-// Deletes all markers in the array by removing references to them.
 function deleteMarkers() {
   clearMarkers();
   markers = [];
 }
 
+function mapButtonHandler() {
+  $('#clearMarkers').on('click', event => clearMarkers())
+  $('#showMarkers').on('click', event => showMarkers())
+  $('#deleteMarkers').on('click', event => deleteMarkers())
+}
 
-// function watchButton() {
-//   $('#enableLocation').on('click', event => {
-//     getLatLng();
-//   })
-// }
-
-// $(function() {
-//   watchButton();
-// });
+$(function() {
+  mapButtonHandler();
+});
 
 
-//var infoWindow = new google.maps.InfoWindow({
-//         content: `<h1 class='infoWindowName'>${brewery.name}</h1>
-//                   <p>Address:</p>
-//                   <p>${brewery.street}</p>
-//                   <p class='margin'>${brewery.city}, ${brewery.state} ${brewery.postal_code}</p>
-//                   <a href="${brewery.phone}" class='phone'>Phone Number: ${brewery.phone}</a>
-        
-//                   `
-//     })
-//     marker.addListener('click', function(){
-//     infoWindow.open(map, marker);
