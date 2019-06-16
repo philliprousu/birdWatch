@@ -44,13 +44,11 @@ function flickrApi(tag) {
 }
 
 function displayBirdPictures(responseJson, tag) {
-  //let pictureUrl = `http://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
-  //'http://farm' + responseJson.photo[i].farm + '.staticflickr.com/' + responseJson.photo[i].server + '/' + responseJson.photo[i].id '_' + responseJson.photo[i].secret + '.jpg'
   console.log(tag)
   $('#birdResults').empty();
   $('#birdResults').append(`<h2>${tag}</h2>`);
   for (let i = 0; i < 50; i++) {
-    $('#birdResults').append(
+    $('#birdPictureResults').append(
       `<img class='birdPicture' src='http://farm${responseJson.photos.photo[i].farm}.staticflickr.com/${responseJson.photos.photo[i].server}/${responseJson.photos.photo[i].id}_${responseJson.photos.photo[i].secret}.jpg' alt='Picture of a ${tag}.'/>`
     )
   }
@@ -187,10 +185,13 @@ function eBirdApi(lat, lng) {
 function addBirdSightings(responseJson) {
   for (let bird of responseJson) {
     addMarker(bird);
+
+
   }
   // setMapOnAll();
 }
 function addMarker(bird) {
+
   var marker = new google.maps.Marker({
     position: {lat: bird.lat, lng: bird.lng},
     map: map
@@ -200,6 +201,7 @@ function addMarker(bird) {
                 <h1 class='infoWindowName'>Scientific Name: ${bird.sciName}</h1>
                 <button value="${bird.sciName}">See Pictures Below</button>
                 `
+                
     });
     marker.addListener('click', function() {
     infoWindow.open(map, marker);

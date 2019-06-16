@@ -6,28 +6,42 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div id="floating-panel">
-      <input id="clearMarkers" type=button value="Hide Markers">
-      <input id="showMarkers" type=button value="Show All Markers">
-      <input id="deleteMarkers" type=button value="Delete Markers">
-    </div>
-    <div id="map"></div>
-    <p id="error"></p>
-    <p>Click on the map to see notable nearby bird sightings or enter an address.</p>
-    <form id="addressSubmit">
-      <label for='streetValue'>Street Address</label>
-      <input id="streetValue" type="text" placeholder="E.g. 1234 N Main Rd" required><br>
-      <label for='cityValue'>City</label>
-      <input id="cityValue" type="text" placeholder="E.g. Phoenix" required><br>
-      <label for='stateValue'>State</label>
-      <input id="stateValue" type="text" placeholder="E.g. Arizona" required><br>
-      <label for='zipCodeValue'>ZipCode</label>
-      <input id="zipCodeValue" type="text" placeholder="E.g. 85331" required><br>
-      <input type="submit" value="Search for Birds">
-    </form>
-    <section id="birdResults"></section>
-    <script src="index.js">
-    </script>
+    <header>
+      <h1>birdWatch</h1>
+      <p class="instructions">Click on map in desired location or enter an address in form below to see plotted pins of 
+      notable bird sightings. Then, click on a pin to open a information window to see the common 
+      and scientific names of the bird as well as a button which can be clicked to see pictures of 
+      the bird below the map.</p>
+    </header>
+    <main>
+      <section class="formSection" role="Form for address input.">
+        <form id="addressSubmit">
+          <label for='streetValue'>Street Address</label>
+          <input id="streetValue" type="text" placeholder="E.g. 1234 N Main Rd" required><br>
+          <label for='cityValue'>City</label>
+          <input id="cityValue" type="text" placeholder="E.g. Phoenix" required><br>
+          <label for='stateValue'>State</label>
+          <input id="stateValue" type="text" placeholder="E.g. Arizona" required><br>
+          <label for='zipCodeValue'>ZipCode</label>
+          <input id="zipCodeValue" type="text" placeholder="E.g. 85331" required><br>
+          <input type="submit" value="Search for Birds">
+        </form>
+      </section>
+      <p id="error" class="hidden"></p>
+      <section class="mapSection">
+        <div id="map" role="Google Map for bird sighting pins.">
+          <div id="floating-panel" role="Clear, delete, and show markers.">
+            <input id="clearMarkers" type=button value="Hide Markers">
+            <input id="showMarkers" type=button value="Show All Markers">
+            <input id="deleteMarkers" type=button value="Delete Markers">
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <section id="birdPictureResults"></section>
+    </footer>
+    <script src="index.js"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDsay1imVAFjQgQO_KEqDTDi1DTGUb8qg&callback=initMap">
     </script>
