@@ -1,5 +1,90 @@
-var map, lat, lng, infoWindow, geoCoder;
-var markers = [];
+let map, lat, lng, infoWindow, geoCoder;
+let markers = [];
+
+//Flickr api
+function formatQueryParams(params) {
+  const queryItems = Object.keys(params)
+    .map(key => `${key}=${params[key]}`)
+  return queryItems.join('&');
+}
+
+function flickrApi(tag) {
+  const flickrUrl = 'https://www.flickr.com/services/rest/'
+  const params = {
+    api_key: '184b7834265d7088dc66cc2fcd42c109',
+    method: 'flickr.photos.search',
+    format: 'json',
+    nojsoncallback: 1,
+    page: 1,
+    per_page: 50,
+    tags: tag
+  };
+  const queryString = formatQueryParams(params)
+  const url = flickrUrl + '?' + queryString;
+
+  console.log(url);
+  
+  fetch(url)
+  .then(response => {
+    if (response.ok) {
+      console.log(response)
+      return response.json()
+    } 
+    throw new Error(response.statusText)
+  })
+  .then(responseJson => {
+    console.log(responseJson);
+    displayBirdPictures(responseJson, tag);
+  })
+  .catch(err => {
+    //$('.results').empty();
+    $('#errorMessage').empty();
+    $('#errorMessage').text(`Something went wrong: ${err.message}`);
+  });
+}
+
+function displayBirdPictures(responseJson, tag) {
+  //let pictureUrl = `http://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
+  //'http://farm' + responseJson.photo[i].farm + '.staticflickr.com/' + responseJson.photo[i].server + '/' + responseJson.photo[i].id '_' + responseJson.photo[i].secret + '.jpg'
+  console.log(tag)
+  $('#birdResults').empty();
+  $('#birdResults').append(`<h2>${tag}</h2>`);
+  for (let i = 0; i < 50; i++) {
+    $('#birdResults').append(
+      `<img class='birdPicture' src='http://farm${responseJson.photos.photo[i].farm}.staticflickr.com/${responseJson.photos.photo[i].server}/${responseJson.photos.photo[i].id}_${responseJson.photos.photo[i].secret}.jpg' alt='Picture of a ${tag}.'/>`
+    )
+  }
+  
+}
+
+function birdPictureSearchButtonHandler() {
+  $('#map').on('click', 'button', function(event) {
+    event.preventDefault();
+    flickrApi($(this).attr("value"));
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -113,6 +198,7 @@ function addMarker(bird) {
     var infoWindow = new google.maps.InfoWindow({
       content: `<h1 class='infoWindowName'>Common Name: ${bird.comName}</h1>
                 <h1 class='infoWindowName'>Scientific Name: ${bird.sciName}</h1>
+                <button value="${bird.sciName}">See Pictures Below</button>
                 `
     });
     marker.addListener('click', function() {
@@ -149,4 +235,5 @@ function mapButtonHandler() {
 $(function() {
   mapButtonHandler();
   formSubmit();
+  birdPictureSearchButtonHandler();
 });
