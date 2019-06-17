@@ -1,7 +1,8 @@
 let map, lat, lng, infoWindow, geoCoder;
+//Global Array for plotted markers
 let markers = [];
 
-//Flickr api
+//Flickr api section
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
     .map(key => `${key}=${params[key]}`)
@@ -21,38 +22,34 @@ function flickrApi(tag) {
   };
   const queryString = formatQueryParams(params)
   const url = flickrUrl + '?' + queryString;
-
-  console.log(url);
-  
   fetch(url)
   .then(response => {
     if (response.ok) {
-      console.log(response)
       return response.json()
     } 
     throw new Error(response.statusText)
   })
   .then(responseJson => {
-    console.log(responseJson);
+    $('#error').addClass('hidden');
+    $('#error').empty();
+    $('#birdPictureResults').empty();
     displayBirdPictures(responseJson, tag);
   })
   .catch(err => {
-    //$('.results').empty();
-    $('#errorMessage').empty();
-    $('#errorMessage').text(`Something went wrong: ${err.message}`);
+    $('#birdPictureResults').empty();
+    $('#error').empty();
+    $('#error').removeClass('hidden');
+    $('#error').text(`Something went wrong: ${err.message}`);
   });
 }
 
 function displayBirdPictures(responseJson, tag) {
-  console.log(tag)
-  $('#birdResults').empty();
-  $('#birdResults').append(`<h2>${tag}</h2>`);
+  $('#birdPictureResults').append(`<h2>${tag}</h2>`);
   for (let i = 0; i < 50; i++) {
     $('#birdPictureResults').append(
       `<img class='birdPicture' src='http://farm${responseJson.photos.photo[i].farm}.staticflickr.com/${responseJson.photos.photo[i].server}/${responseJson.photos.photo[i].id}_${responseJson.photos.photo[i].secret}.jpg' alt='Picture of a ${tag}.'/>`
     )
   }
-  
 }
 
 function birdPictureSearchButtonHandler() {
@@ -62,33 +59,10 @@ function birdPictureSearchButtonHandler() {
   });
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 40.357546, lng: -100.169472},
     zoom: 4
-    // disableDoubleClickZoom: true
   });
   google.maps.event.addListener(map,'click',function(event) {                
     lat = event.latLng.lat();
@@ -129,13 +103,11 @@ $('#addressSubmit').on('submit', function(event) {
     let stateValue = $('#stateValue').val();
     let zipCodeValue = $('#zipCodeValue').val();
     let address = `${streetValue} ${cityValue} ${stateValue} ${zipCodeValue}`
-    console.log(address)
     geocodeAddress(geocoder, map, address);
   });
 }
 
 function geocodeAddress (geocoder, resultsMap, address) {
-  var address = address;
   geocoder.geocode({'address': address}, function(results, status) {
     if (status === 'OK') {
       resultsMap.setCenter(results[0].geometry.location);
@@ -143,7 +115,9 @@ function geocodeAddress (geocoder, resultsMap, address) {
       let lng = results[0].geometry.location.lng();
       eBirdApi(lat, lng);
     } else {
-      alert('Geocode was not successful for the following reason: ' + status);
+      $('#error').empty();
+      $('#error').removeClass('hidden');
+      $('#error').text('Geocode was not successful for the following reason: ' + status);
     }
     })
 }
@@ -151,7 +125,7 @@ function geocodeAddress (geocoder, resultsMap, address) {
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
-  'Error: The Geolocation service failed. Please enable Location services for faster service or zoom in on map manually.'
+  'Use map through manual controls or enable location services on this website for faster service.'
   :
   'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
@@ -172,26 +146,25 @@ function eBirdApi(lat, lng) {
     throw new Error(response.statusText)
   })
   .then(responseJson => {
-    console.log(responseJson)
+    $('#error').addClass('hidden');
+    $('#error').empty();
     addBirdSightings(responseJson);
   })
   .catch(err => {
     //$('.results').empty();
-    $('#errorMessage').empty();
-    $('#errorMessage').text(`Something went wrong: ${err.message}`);
+    $('#error').empty();
+    $('#error').removeClass('hidden');
+    $('#error').text(`Something went wrong: ${err.message}`);
   });
 }
 
 function addBirdSightings(responseJson) {
   for (let bird of responseJson) {
     addMarker(bird);
-
-
   }
   // setMapOnAll();
 }
 function addMarker(bird) {
-
   var marker = new google.maps.Marker({
     position: {lat: bird.lat, lng: bird.lng},
     map: map
@@ -229,9 +202,9 @@ function deleteMarkers() {
 }
 
 function mapButtonHandler() {
-  $('#clearMarkers').on('click', event => clearMarkers())
-  $('#showMarkers').on('click', event => showMarkers())
-  $('#deleteMarkers').on('click', event => deleteMarkers())
+  $('#clearMarkers').on('click', event => clearMarkers());
+  $('#showMarkers').on('click', event => showMarkers());
+  $('#deleteMarkers').on('click', event => deleteMarkers());
 }
 
 $(function() {

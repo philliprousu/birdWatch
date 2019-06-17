@@ -27,18 +27,17 @@
           <input type="submit" value="Search for Birds">
         </form>
       </section>
-      <p id="error" class="hidden"></p>
       <section class="mapSection">
-        <div id="map" role="Google Map for bird sighting pins.">
-          <div id="floating-panel" role="Clear, delete, and show markers.">
+        <div id="map" role="Google Map for bird sighting pins."></div>
+        <div id="floating-panel" class="floatingPanel" role="Clear, delete, and show markers.">
             <input id="clearMarkers" type=button value="Hide Markers">
             <input id="showMarkers" type=button value="Show All Markers">
             <input id="deleteMarkers" type=button value="Delete Markers">
           </div>
-        </div>
       </section>
     </main>
     <footer>
+      <p id="error" class="hidden"></p>
       <section id="birdPictureResults"></section>
     </footer>
     <script src="index.js"></script>
