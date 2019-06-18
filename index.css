@@ -93,7 +93,7 @@ header {
 header h1 {
   /* grid-column: 2/4; */
   text-align: center;
-  
+  margin-top: 5px;
   padding: 10px;
 }
 
@@ -123,6 +123,7 @@ form {
   grid-template-columns: 50% 50%;
   grid-row-gap: 15px;
   grid-template-rows: auto auto auto auto auto;
+  margin-top: 5px;
   margin-bottom: 10px;
 }
 
@@ -239,7 +240,7 @@ form {
   display: flex;
   border: none;
   justify-content: space-around;
-  
+  margin-top: 5px;
 }
 
 .floatingPanel input {
