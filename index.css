@@ -119,91 +119,41 @@ main {
 }
 
 form {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-row-gap: 15px;
-  grid-template-rows: auto auto auto auto auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   margin-top: 5px;
   margin-bottom: 10px;
 }
 
-.streetLabel {
-  grid-column: 1/2;
-  grid-row: 1/2;
-  justify-self: flex-end;
-  margin-right: 10px;
-  align-self: center;
-}
-
-#streetValue {
-  grid-column: 2/3;
-  grid-row: 1/2;
-  margin-left: 10px;
-  width: 75%;
-  padding: 10px;
-  border: 2px solid black;
-  
-}
-
-.cityLabel {
-  grid-row: 2/3;
-  grid-column: 1/2;
-  justify-self: flex-end;
-  margin-right: 10px;
-  align-self: center;
-}
-
-#cityValue {
-  grid-row: 2/3;
-  grid-column: 2/3;
-  margin-left: 10px;
-  width: 50%;
-  padding: 10px;
-  border: 2px solid black;
-}
-
-.stateLabel {
-  grid-row: 3/4;
-  grid-column: 1/2;
-  justify-self: flex-end;
-  margin-right: 10px;
-  align-self: center;
-}
-
-#stateValue {
-  grid-row: 3/4;
-  grid-column: 2/3;
-  margin-left: 10px;
-  width: 50%;
-  padding: 10px;
-  border: 2px solid black;
-}
-
 .zipcodeLabel {
-  grid-row: 4/5;
-  grid-column: 1/2;
-  justify-self: flex-end;
-  margin-right: 10px;
-  align-self: center;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  height: 5vh;
+  text-align: center;
+  width: 25%;
+  border: 2px solid black;
+  font-family: 'Inconsolata', monospace;
 }
 
 #zipCodeValue {
-  grid-row: 4/5;
-  grid-column: 2/3;
-  margin-left: 10px;
-  width: 50%;
-  padding: 10px;
+  height: 5vh;
+  width: 25%;
+  text-align: center;
   border: 2px solid black;
+  font-size: 16px;
+  font-family: 'Inconsolata', monospace;
 }
 
 .formSubmit {
-  grid-row: 5/6;
-  grid-column: 1/6;
-  width: 33%;
+  height: 5vh;
+  width: 25%;
   padding: 10px;
-  justify-self: center;
   background-color: white;
   border: 2px solid black;
+  font-size: 16px;
+  font-family: 'Inconsolata', monospace;
 }
 
 .mapSection {
@@ -222,6 +172,20 @@ form {
   margin: 10px;
   padding: 10px;
   text-align: center;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.birdPictures {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  display: inline;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .birdButtonClass {
@@ -257,7 +221,11 @@ form {
 }
 
 #birdPictureResults h2 {
-  grid-column: 2/4;
+  text-align: center;
+  padding: 10px;
+}
+
+#birdPictureResults h2 {
   text-align: center;
   padding: 10px;
   margin-bottom: 20px;

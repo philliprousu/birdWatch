@@ -111,11 +111,11 @@ function initMap() {
 function formSubmit() {
 $('#addressSubmit').on('submit', function(event) {
     event.preventDefault();
-    let streetValue = $('#streetValue').val();
-    let cityValue = $('#cityValue').val();
-    let stateValue = $('#stateValue').val();
+    // let streetValue = $('#streetValue').val();
+    // let cityValue = $('#cityValue').val();
+    // let stateValue = $('#stateValue').val();
     let zipCodeValue = $('#zipCodeValue').val();
-    let address = `${streetValue} ${cityValue} ${stateValue} ${zipCodeValue}`
+    let address = `${zipCodeValue}`;
     geocodeAddress(geocoder, map, address);
   });
 }
@@ -126,6 +126,8 @@ function geocodeAddress (geocoder, resultsMap, address) {
       resultsMap.setCenter(results[0].geometry.location);
       let lat = results[0].geometry.location.lat();
       let lng = results[0].geometry.location.lng();
+      map.zoom = 10;
+      
       eBirdApi(lat, lng);
     } else {
       $('#error').empty();
