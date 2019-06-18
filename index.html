@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Bird Spot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   </head>
@@ -16,15 +18,15 @@
     <main>
       <section class="formSection" role="Form for address input.">
         <form id="addressSubmit">
-          <label for='streetValue'>Street Address</label>
+          <label for='streetValue' class="streetLabel">Street Address:</label>
           <input id="streetValue" type="text" placeholder="E.g. 1234 N Main Rd" required><br>
-          <label for='cityValue'>City</label>
+          <label for='cityValue' class="cityLabel">City:</label>
           <input id="cityValue" type="text" placeholder="E.g. Phoenix" required><br>
-          <label for='stateValue'>State</label>
+          <label for='stateValue' class="stateLabel">State:</label>
           <input id="stateValue" type="text" placeholder="E.g. Arizona" required><br>
-          <label for='zipCodeValue'>ZipCode</label>
+          <label for='zipCodeValue' class="zipcodeLabel">Zip Code:</label>
           <input id="zipCodeValue" type="text" placeholder="E.g. 85331" required><br>
-          <input type="submit" value="Search for Birds">
+          <input type="submit" value="Search for Birds" class="formSubmit">
         </form>
       </section>
       <section class="mapSection">

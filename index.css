@@ -65,15 +65,185 @@ table {
 .hidden {
   display: none;
 }
+
+h1, h2, h3 {
+  font-family: 'Inconsolata', monospace;
+  border-bottom: 2px solid black;
+  font-size: 30px;
+}
+
+p {
+  font-size: 16px;
+  font-family: 'Inconsolata', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  
+}
+
+header h1 {
+  grid-column: 2/4;
+  text-align: center;
+  
+  padding: 10px;
+}
+
+header p {
+  grid-row: 2/3;
+  grid-column: 1/5;
+  margin: 10px;
+  line-height: 20px;
+  margin-top: 15px;
+}
+
+main {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.formSection {
+  grid-row: 1/2;
+  grid-column: 1/5;
+  justify-content: center;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-row-gap: 15px;
+  grid-template-rows: auto auto auto auto auto;
+  margin-bottom: 10px;
+}
+
+.streetLabel {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  justify-self: flex-end;
+  margin-right: 10px;
+  align-self: center;
+}
+
+#streetValue {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  margin-left: 10px;
+  width: 75%;
+  padding: 10px;
+}
+
+.cityLabel {
+  grid-row: 2/3;
+  grid-column: 1/2;
+  justify-self: flex-end;
+  margin-right: 10px;
+  align-self: center;
+}
+
+#cityValue {
+  grid-row: 2/3;
+  grid-column: 2/3;
+  margin-left: 10px;
+  width: 50%;
+  padding: 10px;
+}
+
+.stateLabel {
+  grid-row: 3/4;
+  grid-column: 1/2;
+  justify-self: flex-end;
+  margin-right: 10px;
+  align-self: center;
+}
+
+#stateValue {
+  grid-row: 3/4;
+  grid-column: 2/3;
+  margin-left: 10px;
+  width: 50%;
+  padding: 10px;
+}
+
+.zipcodeLabel {
+  grid-row: 4/5;
+  grid-column: 1/2;
+  justify-self: flex-end;
+  margin-right: 10px;
+  align-self: center;
+}
+
+#zipCodeValue {
+  grid-row: 4/5;
+  grid-column: 2/3;
+  margin-left: 10px;
+  width: 50%;
+  padding: 10px;
+}
+
+.formSubmit {
+  grid-row: 5/6;
+  grid-column: 1/6;
+  width: 33%;
+  padding: 10px;
+  justify-self: center;
+}
+
+
+
+form input {
+  border: 2px solid black;
+}
+
+.mapSection {
+  grid-row: 2/3;
+  grid-column: 1/6;
+  margin-top: 10px;
+}
+
+#map {
+  height: 80vh;
+}
+
+.infoWindowName {
+  font-size: 16px;
+  border-bottom: none;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.birdButtonClass {
+  border: 2px solid black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.infoWindowDiv {
+  display: flex;
+  flex-direction: column;
+  
+  
+}
+
 /***************************Desktop********************************/
 
 @media screen and (min-width: 1024px) and (max-width: 4000px) {
-
-    
+  body {
+    background-color: blue;
+  }
 }
 
 /***************************Tablet********************************/
 
 @media screen and (min-width: 668px) and (max-width: 1023px) {
-   
+   body {
+    background-color: blue;
+  }
 }

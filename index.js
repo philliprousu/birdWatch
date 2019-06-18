@@ -170,9 +170,12 @@ function addMarker(bird) {
     map: map
     });
     var infoWindow = new google.maps.InfoWindow({
-      content: `<h1 class='infoWindowName'>Common Name: ${bird.comName}</h1>
-                <h1 class='infoWindowName'>Scientific Name: ${bird.sciName}</h1>
-                <button value="${bird.sciName}">See Pictures Below</button>
+      content: `
+                <div class="infoWindowDiv">
+                  <h1 class='infoWindowName'>Common Name: ${bird.comName}</h1>
+                  <h1 class='infoWindowName'>Scientific Name: ${bird.sciName}</h1>
+                  <button class="birdButtonClass" value="${bird.sciName}">See Pictures Below</button>
+                </div>
                 `
                 
     });
