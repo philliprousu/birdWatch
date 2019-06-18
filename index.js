@@ -56,8 +56,21 @@ function birdPictureSearchButtonHandler() {
   $('#map').on('click', 'button', function(event) {
     event.preventDefault();
     flickrApi($(this).attr("value"));
+    // scrollDown();
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $("#birdPictureResults").offset().top
+    }, 2000);
   });
 }
+
+// function scrollDown() {
+
+// }
+// $("#button").click(function() {
+//     $([document.documentElement, document.body]).animate({
+//         scrollTop: $("#elementtoScrollToID").offset().top
+//     }, 2000);
+// });
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {

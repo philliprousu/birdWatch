@@ -47,19 +47,18 @@ table {
 	border-spacing: 0;
 }
 
-#map {
-  height: 50vh;
-  
+html {
+  scroll-behavior: smooth;
 }
 
 .floatingPanel {
   background-color: #fff;
-  padding: 5px;
+  
   border: 1px solid #999;
   text-align: center;
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
-  padding-left: 10px;
+  
 }
 
 .hidden {
@@ -82,25 +81,29 @@ p {
 }
 
 header {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto auto; */
   
 }
 
 header h1 {
-  grid-column: 2/4;
+  /* grid-column: 2/4; */
   text-align: center;
   
   padding: 10px;
 }
 
 header p {
-  grid-row: 2/3;
-  grid-column: 1/5;
+  /* grid-row: 2/3;
+  grid-column: 1/5; */
   margin: 10px;
   line-height: 20px;
   margin-top: 15px;
+  text-align: center;
 }
 
 main {
@@ -137,6 +140,8 @@ form {
   margin-left: 10px;
   width: 75%;
   padding: 10px;
+  border: 2px solid black;
+  
 }
 
 .cityLabel {
@@ -153,6 +158,7 @@ form {
   margin-left: 10px;
   width: 50%;
   padding: 10px;
+  border: 2px solid black;
 }
 
 .stateLabel {
@@ -169,6 +175,7 @@ form {
   margin-left: 10px;
   width: 50%;
   padding: 10px;
+  border: 2px solid black;
 }
 
 .zipcodeLabel {
@@ -185,6 +192,7 @@ form {
   margin-left: 10px;
   width: 50%;
   padding: 10px;
+  border: 2px solid black;
 }
 
 .formSubmit {
@@ -193,18 +201,14 @@ form {
   width: 33%;
   padding: 10px;
   justify-self: center;
-}
-
-
-
-form input {
+  background-color: white;
   border: 2px solid black;
 }
 
 .mapSection {
   grid-row: 2/3;
   grid-column: 1/6;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 #map {
@@ -222,14 +226,45 @@ form input {
 .birdButtonClass {
   border: 2px solid black;
   padding: 10px;
-  margin: 10px;
+  margin: 20px;
+  background-color: white;
 }
 
 .infoWindowDiv {
   display: flex;
   flex-direction: column;
+}
+
+.floatingPanel {
+  display: flex;
+  border: none;
+  justify-content: space-around;
   
-  
+}
+
+.floatingPanel input {
+  border: 2px solid black;
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+}
+
+#birdPictureResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#birdPictureResults h2 {
+  grid-column: 2/4;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.birdPicture {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 /***************************Desktop********************************/
