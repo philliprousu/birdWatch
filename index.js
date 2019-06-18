@@ -44,7 +44,7 @@ function flickrApi(tag) {
 }
 
 function displayBirdPictures(responseJson, tag) {
-  $('#birdPictureResults').append(`<h2>${tag}</h2>`);
+  $('#birdPictureResults').append(`<h2 class="effectsHeader">${tag}</h2>`);
   for (let i = 0; i < 50; i++) {
     $('#birdPictureResults').append(
       `<img class='birdPicture' src='http://farm${responseJson.photos.photo[i].farm}.staticflickr.com/${responseJson.photos.photo[i].server}/${responseJson.photos.photo[i].id}_${responseJson.photos.photo[i].secret}.jpg' alt='Picture of a ${tag}.'/>`

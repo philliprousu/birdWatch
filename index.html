@@ -12,31 +12,31 @@
   </head>
   <body>
     <header>
-      <h1>birdWatch</h1>
+      <h1 class="effectsHeader">birdWatch</h1>
       <p class="instructions">Click on map in desired location or enter a zip code below to see 
         plotted pins of bird sightings. Then, click on a pin to open an information window to see 
         the names of the bird and a button to see pictures of the bird.</p>
+      <section class="formSection" role="Form for address input.">
+        <form id="addressSubmit">
+          <label for='zipCodeValue' class="zipcodeLabel effects">Zip Code -></label>
+          <input id="zipCodeValue" class="effects" type="text" placeholder="E.g. 85331" required>
+          <input type="submit" value="Search" class="formSubmit effects">
+        </form>
+      </section>
     </header>
     <main>
       <p id="error" class="hidden"></p>
-      <section class="formSection" role="Form for address input.">
-        <form id="addressSubmit">
-          <label for='zipCodeValue' class="zipcodeLabel">Zip Code -></label>
-          <input id="zipCodeValue" type="text" placeholder="E.g. 85331" required>
-          <input type="submit" value="Search" class="formSubmit">
-        </form>
-      </section>
       <section class="mapSection">
         <div id="map" role="Google Map for bird sighting pins."></div>
         <div id="floating-panel" class="floatingPanel" role="Clear, delete, and show markers.">
-            <input id="clearMarkers" type=button value="Hide Markers">
-            <input id="showMarkers" type=button value="Show Markers">
-            <input id="deleteMarkers" type=button value="Delete Markers">
+            <input id="clearMarkers" class="effects" type=button value="Hide">
+            <input id="showMarkers" class="effects" type=button value="Show">
+            <input id="deleteMarkers" class="effects" type=button value="Delete">
           </div>
       </section>
     </main>
     <footer>
-      <h2 class="birdPictures">Bird Pictures</h2>
+      <h2 class="birdPictures effectsHeader">Bird Pictures</h2>
       <section id="birdPictureResults">
       </section>
     </footer>
