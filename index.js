@@ -63,15 +63,6 @@ function birdPictureSearchButtonHandler() {
   });
 }
 
-// function scrollDown() {
-
-// }
-// $("#button").click(function() {
-//     $([document.documentElement, document.body]).animate({
-//         scrollTop: $("#elementtoScrollToID").offset().top
-//     }, 2000);
-// });
-
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 40.357546, lng: -100.169472},
@@ -92,9 +83,6 @@ function initMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      // infoWindow.setPosition(pos);
-      // infoWindow.setContent('Location found.');
-      // infoWindow.open(map);
       map.zoom = 10;
       map.setCenter(pos);
     }, 
@@ -111,9 +99,6 @@ function initMap() {
 function formSubmit() {
 $('#addressSubmit').on('submit', function(event) {
     event.preventDefault();
-    // let streetValue = $('#streetValue').val();
-    // let cityValue = $('#cityValue').val();
-    // let stateValue = $('#stateValue').val();
     let zipCodeValue = $('#zipCodeValue').val();
     let address = `${zipCodeValue}`;
     geocodeAddress(geocoder, map, address);
