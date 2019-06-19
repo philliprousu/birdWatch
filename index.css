@@ -175,7 +175,6 @@ form {
 .formSubmit {
   height: 40px;
   width: 25%;
-
   background-color: white;
   border: 2px solid black;
   font-size: 16px;
@@ -279,7 +278,7 @@ footer {
 /***************************Tablet********************************/
 
 @media screen and (min-width: 668px) and (max-width: 1023px) {
-
+  /* Not Needed for this project */
 }
 
 /***************************Desktop********************************/

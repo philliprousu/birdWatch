@@ -5,7 +5,7 @@ let markers = [];
 //Flickr api section
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
-    .map(key => `${key}=${params[key]}`)
+  .map(key => `${key}=${params[key]}`)
   return queryItems.join('&');
 }
 
@@ -56,7 +56,6 @@ function birdPictureSearchButtonHandler() {
   $('#map').on('click', 'button', function(event) {
     event.preventDefault();
     flickrApi($(this).attr("value"));
-    // scrollDown();
     $([document.documentElement, document.body]).animate({
         scrollTop: $("#birdPictureResults").offset().top
     }, 2000);
@@ -90,10 +89,8 @@ function initMap() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
   } else {
-    // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
-
 }
 
 function formSubmit() {
@@ -112,14 +109,13 @@ function geocodeAddress (geocoder, resultsMap, address) {
       let lat = results[0].geometry.location.lat();
       let lng = results[0].geometry.location.lng();
       map.zoom = 10;
-      
       eBirdApi(lat, lng);
     } else {
       $('#error').empty();
       $('#error').removeClass('hidden');
       $('#error').text('Geocode was not successful for the following reason: ' + status);
     }
-    })
+  })
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -151,7 +147,6 @@ function eBirdApi(lat, lng) {
     addBirdSightings(responseJson);
   })
   .catch(err => {
-    //$('.results').empty();
     $('#error').empty();
     $('#error').removeClass('hidden');
     $('#error').text(`Something went wrong: ${err.message}`);
@@ -162,27 +157,27 @@ function addBirdSightings(responseJson) {
   for (let bird of responseJson) {
     addMarker(bird);
   }
-  // setMapOnAll();
 }
+
 function addMarker(bird) {
   var marker = new google.maps.Marker({
     position: {lat: bird.lat, lng: bird.lng},
     map: map
-    });
-    var infoWindow = new google.maps.InfoWindow({
-      content: `
-                <div class="infoWindowDiv">
-                  <h1 class='infoWindowName'>Common Name: ${bird.comName}</h1>
-                  <h1 class='infoWindowName'>Scientific Name: ${bird.sciName}</h1>
-                  <button class="birdButtonClass" value="${bird.sciName}">See Pictures Below</button>
-                </div>
-                `
-                
-    });
-    marker.addListener('click', function() {
-    infoWindow.open(map, marker);
-    })
-    markers.push(marker);  
+  });
+  var infoWindow = new google.maps.InfoWindow({
+    content: 
+    `
+    <div class="infoWindowDiv">
+      <h1 class='infoWindowName'>Common Name: ${bird.comName}</h1>
+      <h1 class='infoWindowName'>Scientific Name: ${bird.sciName}</h1>
+      <button class="birdButtonClass effects" value="${bird.sciName}">See Pictures Below</button>
+    </div>
+      `        
+  });
+  marker.addListener('click', function() {
+  infoWindow.open(map, marker);
+  })
+  markers.push(marker);  
 }
 
 function clearMarkers() {
