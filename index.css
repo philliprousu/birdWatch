@@ -230,12 +230,15 @@ footer {
   border: 2px solid black;
   padding: 10px;
   margin: 20px;
+  width: 60%;
   background-color: white;
+  font-family: 'Inconsolata', monospace;
 }
 
 .infoWindowDiv {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .floatingPanel {
