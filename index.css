@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -11,8 +11,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -23,7 +23,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -88,7 +88,7 @@ p {
   color: white;
   background-color: black;
   border-color: red;
-  -webkit-box-shadow: 0px 7px 0px -3px rgba(0,0,0,0.5); 
+  -webkit-box-shadow: 0px 7px 0px -3px rgba(0,0,0,0.5);
   box-shadow: 0px 7px 0px -3px rgba(0,0,0,0.5);
   -moz-transform: scale(1.2);
   -webkit-transform: scale(1.2);
@@ -105,7 +105,7 @@ p {
   border-color: red;
   color: white;
   background-color: black;
-  -webkit-box-shadow: 0px 7px 0px -3px rgba(0,0,0,0.5); 
+  -webkit-box-shadow: 0px 7px 0px -3px rgba(0,0,0,0.5);
   box-shadow: 0px 7px 0px -3px rgba(0,0,0,0.5);
   -moz-transform: scale(1.05);
   -webkit-transform: scale(1.05);
@@ -117,7 +117,7 @@ p {
 header {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
 }
 
 header h1 {
@@ -154,7 +154,7 @@ form {
 
 .zipcodeLabel {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   height: 40px;
   text-align: center;
@@ -274,8 +274,11 @@ footer {
 }
 
 .birdPicture {
-  width: 100%;
-  margin-bottom: 10px;
+  width: 75%;
+  height: 75%;
+  margin-left: 10vw;
+  margin-top: 5vh;
+  margin-right: 10vw;
 }
 
 /***************************Tablet********************************/
@@ -288,11 +291,11 @@ footer {
 
 @media screen and (min-width: 1024px) and (max-width: 4000px) {
   body {
-    display: grid; 
+    display: grid;
     grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
     grid-template-rows: auto auto auto;
   }
-  
+
   header {
     grid-row: 1/2;
     grid-column: 1/6;
@@ -308,7 +311,7 @@ footer {
     margin-right: 20px;
     margin-left: 20px;
   }
-  
+
   footer {
     grid-row: 2/3;
     grid-column: 1/11;
